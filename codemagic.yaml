@@ -1,3 +1,4 @@
+
 workflows:
   android-workflow:
     name: Android Workflow
@@ -11,3 +12,4 @@ workflows:
           gradle :app:assembleDebug
     artifacts:
       - app/build/outputs/**/*.apk
+      
