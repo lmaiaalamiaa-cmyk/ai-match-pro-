@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.aimatchpro"
+    namespace = "com.aimatchpro.app"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.aimatchpro"
+        applicationId = "com.aimatchpro.app"
         minSdk = 23
         targetSdk = 35
         versionCode = 1
@@ -30,5 +30,3 @@ android {
         jvmTarget = "17"
     }
 }
-
-
