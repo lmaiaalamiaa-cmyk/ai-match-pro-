@@ -1,4 +1,3 @@
-
 package com.aimatchpro.app
 
 import android.os.Bundle
@@ -7,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -17,7 +17,6 @@ import androidx.compose.ui.unit.*
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.LayoutDirection
 import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.Locale
 
 private val Background = Color(0xFF080D18)
@@ -29,6 +28,7 @@ private val Muted = Color(0xFF91A0B5)
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             CompositionLocalProvider(
                 LocalLayoutDirection provides LayoutDirection.Rtl
@@ -120,10 +120,12 @@ fun MatchApp() {
             ) {
                 repeat(15) { index ->
                     val date = LocalDate.now().plusDays(index.toLong())
+
                     val dayName = date.dayOfWeek.getDisplayName(
                         java.time.format.TextStyle.SHORT,
                         Locale("ar")
                     )
+
                     val label = if (index == 0) "اليوم"
                     else "$dayName ${date.dayOfMonth}"
 
@@ -190,8 +192,7 @@ fun MatchApp() {
                         ) {
                             Row(
                                 modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement =
-                                    Arrangement.SpaceBetween
+                                horizontalArrangement = Arrangement.SpaceBetween
                             ) {
                                 Text(
                                     match.league,
@@ -209,13 +210,11 @@ fun MatchApp() {
 
                             Row(
                                 modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement =
-                                    Arrangement.SpaceBetween,
+                                horizontalArrangement = Arrangement.SpaceBetween,
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 Column(
-                                    horizontalAlignment =
-                                        Alignment.CenterHorizontally,
+                                    horizontalAlignment = Alignment.CenterHorizontally,
                                     modifier = Modifier.weight(1f)
                                 ) {
                                     Text("⚽", fontSize = 30.sp)
@@ -235,8 +234,7 @@ fun MatchApp() {
                                 )
 
                                 Column(
-                                    horizontalAlignment =
-                                        Alignment.CenterHorizontally,
+                                    horizontalAlignment = Alignment.CenterHorizontally,
                                     modifier = Modifier.weight(1f)
                                 ) {
                                     Text("⚽", fontSize = 30.sp)
@@ -267,8 +265,7 @@ fun MatchApp() {
                                     modifier = Modifier
                                         .fillMaxWidth()
                                         .padding(vertical = 5.dp),
-                                    verticalAlignment =
-                                        Alignment.CenterVertically
+                                    verticalAlignment = Alignment.CenterVertically
                                 ) {
                                     Text(
                                         "${i + 1}",
@@ -310,7 +307,9 @@ fun MatchApp() {
                         icon = {
                             Text(symbols[index], fontSize = 19.sp)
                         },
-                        label = { Text(tab, fontSize = 11.sp) },
+                        label = {
+                            Text(tab, fontSize = 11.sp)
+                        },
                         colors = NavigationBarItemDefaults.colors(
                             selectedIconColor = Green,
                             selectedTextColor = Green,
